@@ -1,0 +1,23 @@
+name: AgentProof AI Security Scanner
+description: Scan AI agents and MCP security controls; generate an OWASP-aligned evidence passport.
+branding:
+  icon: shield
+  color: blue
+inputs:
+  manifest:
+    description: Path to the AgentProof JSON manifest
+    required: false
+    default: agentproof.json
+  classification:
+    description: Evidence classification
+    required: false
+    default: observed
+  output:
+    description: Evidence-passport output path
+    required: false
+    default: agentproof-passport.json
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: PYTHONPATH="${{ github.action_path }}" python -m agentproof.cli scan "${{ inputs.manifest }}" --classification "${{ inputs.classification }}" --output "${{ inputs.output }}"

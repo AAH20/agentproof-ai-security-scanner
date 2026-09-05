@@ -1,0 +1,47 @@
+{
+  "agent": {
+    "id": "enterprise-procurement-agent",
+    "version": "1.0.0",
+    "owner": "security-engineering",
+    "framework": "mcp"
+  },
+  "authority": {
+    "identity_type": "workload",
+    "allowed_tools": ["evidence.read", "questionnaire.draft"],
+    "prohibited_tools": ["shell.exec", "payment.release"]
+  },
+  "controls": {
+    "human_approval_for_high_impact": true,
+    "untrusted_content_isolation": true,
+    "secret_scanning": true,
+    "output_dlp": true,
+    "tenant_isolation": true,
+    "revocation": true,
+    "kill_switch": true,
+    "pinned_dependencies": true,
+    "signed_artifacts": true,
+    "fail_closed": true
+  },
+  "telemetry": {
+    "identity": true,
+    "policy_decision": true,
+    "tool_call": true,
+    "outcome": true
+  },
+  "economics": {
+    "adversarial_tests_run": 100,
+    "adversarial_attacks_succeeded": 2,
+    "unauthorized_action_attempts": 20,
+    "unauthorized_actions_prevented": 20,
+    "governed_actions": 1000,
+    "complete_evidence_receipts": 990,
+    "evaluation_runs": 10,
+    "evaluation_infrastructure_cost_usd": 25,
+    "reviewer_hours": 3,
+    "reviewer_loaded_hourly_rate_usd": 100,
+    "manual_review_hours_baseline": 16,
+    "validated_incidents_prevented": 2,
+    "expected_annual_loss_reduction_usd": 50000,
+    "annual_program_cost_usd": 10000
+  }
+}
